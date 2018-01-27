@@ -1,0 +1,18 @@
+context internal {
+// Call 00 extension to talk
+ 00 => {       Set(CHANNEL(hangup_handler_push)=destroywake,s,1);
+                System(/bin/bash /etc/scripts/raise_conf.sh);
+                ConfBridge(wake);
+        };
+};
+
+
+context wakeupbridge {
+// drop all incoming to ConfBridge
+        s => ConfBridge(wake);
+};
+
+context destroywake {
+        s => System(/bin/bash /etc/scripts/kickall.sh);
+};
+
