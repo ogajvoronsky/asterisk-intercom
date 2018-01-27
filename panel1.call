@@ -1,0 +1,6 @@
+Channel: SIP/panel1
+Callerid: Group call 
+MaxRetries: 1
+RetryTime: 1
+Context: wakeupbridge
+Extension: s
