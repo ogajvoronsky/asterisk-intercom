@@ -1,4 +1,4 @@
-Channel: SIP/panel1
+Channel: LOCAL/1@panels
 Callerid: Group call 
 MaxRetries: 1
 RetryTime: 1
