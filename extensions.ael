@@ -7,10 +7,32 @@ context internal {
 };
 
 
+
+context panels {
+        1 => {
+                SIPAddHeader(Priv-Answer-Mode: Auto);
+                SIPAddHeader(Call-Info:<sip:>\;answer-after=0);
+                //SIPAddHeader(Answer-Mode: Auto);
+                Dial(SIP/panel1);
+        };
+
+        2 => {
+                SIPAddHeader(Priv-Answer-Mode: Auto);
+                SIPAddHeader(Call-Info:<sip:>\;answer-after=0);
+                //SIPAddHeader(Answer-Mode: Auto);
+                Dial(SIP/panel2);
+        };
+
+};
+
+
+
 context wakeupbridge {
 // drop all incoming to ConfBridge
         s => ConfBridge(wake);
 };
+
+
 
 context destroywake {
         s => System(/bin/bash /etc/scripts/kickall.sh);
